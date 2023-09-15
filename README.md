@@ -2,6 +2,29 @@
 
 <br>
 
+## Orders In Between
+
+Querying orders in-between a certain date range seems simple at first,  
+after all the search query syntax allows one to specify the `created_at`  
+property with `:>` , `:>=` , `:` , `:<=` , `<` operators.
+
+You'd think you could use a query such as this one:
+
+```
+created_at:>=2023-07-23T18:43:48.000Z AND created_at:<=2023-07-23T18:43:50.000Z
+```
+
+This however won't return any results, instead you are forced  
+to only specify one side of the range and process the returned  
+results, checking which are in the range of the other side.
+
+This still isn't the end of it, as multiple orders can be created  
+at the same time, which in turn means you won't be able to  
+differenciate them based on their timestamp alone.
+
+<br>
+<br>
+
 ## Order Names
 
 An order's name is made up of the actual order  
